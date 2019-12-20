@@ -1,0 +1,302 @@
+/*This is the style sheet for the Home page, About page, and projectOne page. All styles
+  are formatted on this style sheet for entire website. */
+
+/* These are the Master Styles of the Portfolio Website */
+
+html {
+
+     color: black;
+
+}
+
+body {
+
+     margin: 0px;
+     font-family: "Julius Sans One", sans-serif;
+     background-color: rgb(214, 216, 218);
+
+}
+
+.container {
+
+     display: grid;
+     grid-template-columns: lfr;
+
+}
+
+/* These are the Nav styles of the Portfolio Website */
+
+.nav-wrapper {
+
+     display: flex;
+     justify-content: space-between;
+     padding: 42px;
+     background-color: rgb(157, 191, 196);
+
+}
+
+.left-side {
+
+     display: flex;
+     justify-content: space-between;
+     font-family: "Alata", sans-serif;
+     font-size: 170%;
+
+}
+
+.right-side {
+
+     display: flex;
+     justify-content: space-between;
+
+}
+
+.nav-wrapper > .right-side > .brand-name {
+
+     font-size: 140%;
+     font-display: large;
+
+}
+
+.nav-wrapper > .left-side > div {
+
+     margin-right: 20px;
+     font-size: 0.85em;
+     text-transform: uppercase;
+     
+}
+
+.nav-link-wrapper {
+
+     height: 35px;
+     border-bottom: 15px solid transparent;
+     transition: border-bottom 1.2s;
+
+}
+
+.nav-link-wrapper a {
+
+     color: darkgreen;
+     text-decoration: none;
+     transition: color 2.5s;
+
+}
+
+.nav-link-wrapper:hover {
+
+     border-bottom: 3px solid black;
+
+}
+
+.nav-link-wrapper a:hover {
+
+     color: black;
+     
+}
+
+.active-nav-link {
+
+     border-bottom: 3px solid black;
+
+}
+
+.active-nav-link a {
+
+     color: black !important;
+
+}
+
+
+/* These are the Portfolio styles of the Portfolio Website - index.html */
+
+.portfolio-items-wrapper {
+
+     /* When adding another portfolio item to index.html, make sure you copy the entire 
+     portfolio-item-wrapper div and add content as needed. */
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+.portfolio-item-wrapper {
+
+     position: relative;
+
+}
+
+.portfolio-img-background {
+
+     height: 350px;
+     width: 100%;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+
+}
+
+.img-text-wrapper {
+
+     /* portfolio-item-wrapper div must be position relative for the following css below to work 
+     img-text-wrapper div must be a child div to portfolio-item-wrapper */
+     position: absolute;
+     top: 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     text-align: center;
+     padding-left: 100px;
+     padding-right: 100px;
+
+}
+
+.logo-wrapper img {
+
+     width: 50%;
+     margin-bottom: 20px;
+
+}
+
+.img-text-wrapper .subtitle {
+
+     /* Occurs when user's cursor is not over a portfolio item page.
+     Font weight must be in both states. */
+     transition: 0.8s;
+     font-weight: 600;
+     color: transparent;
+
+}
+
+.img-text-wrapper .view-project-link {
+
+     /* Occurs when user's cursor is not over a portfolio item page.
+     Font weight must be in both states. */
+     visibility: hidden;
+     transition: 0.8s;
+     font-weight: 600;
+
+}
+
+.img-text-wrapper:hover .subtitle {
+
+     /* Only occurs when user hovers cursor over a portfolio item page. */
+     font-weight: 600;
+     color: limegreen;
+
+}
+
+.img-text-wrapper:hover .view-project-link a {
+
+    /* Only occurs when user hovers cursor over a portfolio item page. */
+    visibility: visible;
+    font-weight: 600;
+    color: limegreen;
+
+}
+
+.img-darken  {
+
+     transition: 1s;
+     filter: brightness(20%);
+
+}
+
+/* Styles for the About Page - about.html */
+
+.two-column-wrapper  {
+
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+
+}
+
+.profile-image-wrapper {
+
+     background-color: rgb(157, 191, 196);
+
+}
+
+.profile-image-wrapper img  {
+
+     width: 100%;
+
+}
+
+.profile-content-wrapper  {
+
+     padding: 30px;
+
+}
+
+.profile-content-wrapper h1  {
+
+     color: darkgreen;
+
+}
+
+.profile-content-wrapper h3  {
+
+     font-family: "Alata", sans-serif;
+
+}
+
+/* This is the style for projectOne.html */
+
+.ProjectOne-content-wrapper  {
+
+     display: flex;
+ 
+ }
+
+.ProjectOne-two-row {
+
+     position: relative;
+
+}
+
+.ProjectOne-description {
+
+     padding-left: 3%;
+     padding-right: 3%;
+     font-family: "Alata", sans-serif;
+     font-size: larger;
+
+}
+
+.ProjectOne-description h1 {
+
+     font-family: "Julius Sans One", sans-serif;
+     color: darkgreen;
+
+}
+
+.ProjectOne-description a {
+
+     color: darkgreen;
+
+}
+ 
+.ProjectOne-description a:hover {
+
+     color: limegreen;
+
+}
+
+.ProjectOne-images {
+
+     padding-left: 3%;
+     padding-right: 3%;
+     padding-bottom: 1%;
+     display: grid;
+     grid-template-rows: 5fr;
+     grid-area: auto;
+
+}
+
+.ProjectOne-images img  {
+
+     width: 100%;
+     height: fit-content;
+
+}
