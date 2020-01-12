@@ -300,3 +300,51 @@ body {
      height: fit-content;
 
 }
+
+/* This is the style for projectTwo.html, currently WIP */
+
+.ProjectTwo-content-wrapper  {
+
+     display: flex;
+ 
+ }
+
+ .ProjectTwo-two-row {
+
+     position: relative;
+
+}
+
+.ProjectTwo-description {
+
+     padding-left: 3%;
+     padding-right: 3%;
+     font-family: "Alata", sans-serif;
+     font-size: larger;
+
+}
+
+.ProjectTwo-description h1 {
+
+     font-family: "Julius Sans One", sans-serif;
+     color: darkgreen;
+
+}
+
+.ProjectTwo-images {
+
+     padding-left: 3%;
+     padding-right: 3%;
+     padding-bottom: 1%;
+     display: grid;
+     grid-template-rows: 5fr;
+     grid-area: auto;
+
+}
+
+.ProjectTwo-images img  {
+
+     width: 100%;
+     height: fit-content;
+
+}

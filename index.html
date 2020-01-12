@@ -52,6 +52,7 @@
 
                 <div class="portfolio-item-wrapper">
 
+                    <!--projectOne.html, Complete-->
                     <div class = "portfolio-img-background" style = "background-image:url(images/ShoppingCartTitlePage.PNG)">
                     </div>
 
@@ -71,7 +72,35 @@
                         </div>
 
                     </div>
+
                     
+                    
+                </div>
+
+                <div class="portfolio-item-wrapper">
+
+                    <!--projectTwo.html it is WIP, add an image style URL once project is built-->
+                    <div class = "portfolio-img-background" style = "background-image:url(images/Placeholder.PNG)">
+                    </div>
+
+                    <div class = "img-text-wrapper">
+
+                        <div class = "logo-wrapper">
+                            <img src = "images/Logos/JavascriptLogo.png" alt = "">
+
+                        </div>
+
+                        <div class = "subtitle">
+                            My Personal Javascript Project.
+                        </div>
+
+                        <div class = "view-project-link">
+                            <a href = "projectTwo.html">View Project</a>
+                        </div>
+
+                    </div>
+
+
                 </div>
 
             </div>
@@ -84,10 +113,16 @@
 
 <script>
 
+    /* When adding another portfolio item to this page, make sure you copy the entire 
+     portfolio-item-wrapper div and add content as needed. */
+
     const portfolioItems = document.querySelectorAll('.portfolio-item-wrapper')
 
     portfolioItems.forEach(portfolioItem => {
 
+            //Note: both functions 'mouseover' and 'mouseout' need to listen to child nodes 1 and 3.
+            //i.e. JS is listening for mouseover and mouseout of text and image.
+            
         portfolioItem.addEventListener('mouseover', () =>  {
 
             //Console in web browser returns the array list of all div's.
@@ -97,13 +132,13 @@
             //Uncomment below for console log testing purposes on div profile-img-background.
             //console.log(portfolioItem.childNodes[1].classList);
 
-            portfolioItem.childNodes[1].classList.add('img-darken');
+            portfolioItem.childNodes[1, 3].classList.add('img-darken');
 
         })
 
         portfolioItem.addEventListener('mouseout', () =>  {
 
-            portfolioItem.childNodes[1].classList.remove('img-darken');
+            portfolioItem.childNodes[1, 3].classList.remove('img-darken');
 
         })
 
