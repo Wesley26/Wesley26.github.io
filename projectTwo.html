@@ -48,32 +48,95 @@
 
         <div class = "ProjectTwo-content-wrapper">
 
-            <script>
-
-                //WIP JS message to the user
-                alert("Is this another tech demo?");
-            
-            </script>
-
-            <div class = "ProjectTwo-two-row">
+            <div class = "ProjectTwo-three-row">
 
                 <div class = ProjectTwo-description>
 
-                    <h1>Javascript Personal Project</h1>
+                    <h1>Javascript Messenger Personal Project</h1>
 
-                    <p>This is a Javascript project currently under development. It's releasing very soon and will also
-                        recieve its own image background page at the home page. Currently, I am using a blank color
-                        piece image as a place holder.
+                    <p>This is a Javascript messenger project started on January 11th, 2020. Its final version
+                        was completed on January 17th, 2020. This is a front-end inner HTML messenger application.
+                        The application uses HTML, CSS, and Javascript. The three buttons below allow you to
+                        add or remove messages posted to the screen from what is typed in the text box. The 
+                        boneworks button gives you an alert message with a quote from the Virtual Reality game Boneworks.
+                        More detailed documentation can be viewed from my GitHub <a href = "https://github.com/Wesley26/Wesley26.github.io/blob/master/projectTwo.html">respository.</a>
+                        The application and website were coded in Visual Studio Code.
                     </p>
 
                 </div>
 
+                <div class = ProjectTwo-TextBoxApplication>
+
+                    <div class = Messages-Box>
+
+                       <ul id = "messages"></ul>
+                       <input id = "textbox" style = "height:20px; width:250px" type = "text">
+
+                    </div>
+
+                    <div class = Buttons-Box>
+
+                       <button id = "addButton" style = "height:40px">Add Text</button>
+                       <button id = "deleteButton" style = "height:40px">Remove Text</button>
+                       <button id = "boneworksButton" style = "height:40px">Boneworks</button>
+
+                    </div>
+
+                    <script>
+                           //Javascript to control the User-Interface-Of-Messages-Wrapper div.
+                           var messages = document.getElementById("messages");
+                           var textbox = document.getElementById("textbox");
+                           var button = document.getElementById("addButton"); // adds text to screen
+                           var button = document.getElementById("deleteButton"); //removes all text from screen
+                           var button = document.getElementById("boneworksButton"); //gives random Boneworks VR video game quotes
+
+                           //event listener when clicking addButton
+                           addButton.addEventListener("click", function(){
+
+                              var newMessage = document.createElement("li");
+
+                              //set innerHTML to the value inside text box
+                              newMessage.innerHTML = textbox.value;
+                              messages.appendChild(newMessage);
+
+                              //clears the textbox
+                              textbox.value = "";
+
+                           });
+                           
+                           //event listener when clicking deleteButton
+                           deleteButton.addEventListener("click", function(){
+                              
+                              var answer; //variable to store what answer response user recieves.
+                              var option = confirm("Are you sure you would prefer to delete all messages?");
+                              //option is boolean, confirm takes one true [OK] and false [Cancel] argument
+
+                              if (option) {
+                                  answer = alert("Your messages are removed.");
+                                  window.location.href = "projectTwo.html"; //clears/reset entire window
+
+                              } else {
+                                  answer = alert("Your messages have been kept on your screen.");
+
+                              }
+
+                           });
+
+                           //event listener when clicking boneworksButton
+                           boneworksButton.addEventListener("click", function(){
+
+                               alert("Is this another tech demo?");
+                           });
+
+                    </script>
+
+               </div>
+
                 <div class = ProjectTwo-images>
 
-                      <!-- Insert images for this Javascript project here if there are any. -->
+                      <img src =images/JSProject2/JSMessengerAppPic1.PNG>
 
                 </div>
-
 
             </div>     
 
