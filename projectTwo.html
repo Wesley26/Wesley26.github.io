@@ -46,21 +46,269 @@
 
         </div>
 
+        <div class = "ProjectTwo-master-content-wrapper">
+            <!--The master content wrapper div holds all ProjectTwo embedded applications together in a grid.-->
+
+        <div class = "ProjectTwo2-content-wrapper">
+
+            <div class = "ProjectTwo2-three-row">
+
+                <div class = ProjectTwo2-description>
+
+                    <h1>Javascript Calculator Personal Project</h1>
+
+                    <p> This is a Javascript calculator project annexed January 21st, 2020. This calculator uses
+                        the standard arithmetic operations in math such as addition, subtraction, multiplication,
+                        and division. The calculator also checks to see when each button is pressed and in which
+                        order. A snippet of this Javascript application is shown in the photo below.
+                    </p>
+
+                </div>
+
+                <div class = calculatorApp>
+
+                    <div class = calculatorDisplay>0</div>
+                    <div class = calculatorKeys>
+
+                        <button>1</button> <button>2</button> <button>3</button>
+                        <button>4</button> <button>5</button> <button>6</button>
+                        <button>7</button> <button>8</button> <button>9</button>
+                        <button>0</button>
+                        <button class = "keyOperator" data-action = "add">+</button>
+                        <button class = "keyOperator" data-action = "subtract">-</button>
+                        <button class = "keyOperator" data-action = "multiply">&times;</button>
+                        <button class = "keyOperator" data-action = "divide">/</button>
+                        <button data-action = "decimal">.</button>
+                        <button data-action = "clear">AC</button>
+                        <button class = "keyEqual" data-action = "calculate">=</button>
+
+                    </div>
+
+                    <script> //Javascript for calculatorApp
+                             //Uncomment any console.log to see each message the buttons give when pressed.
+
+                        //grabbing each div of the calculatorApp and initializing them as a constant
+                        const calculator = document.querySelector(".calculatorApp");
+                        const display = document.querySelector(".calculatorDisplay");
+                        const keys = calculator.querySelector(".calculatorKeys");
+
+                        keys.addEventListener("click", e => {
+                            
+                            if (e.target.matches("button")) {
+
+                                 const key = e.target;
+                                 const action = key.dataset.action;
+                                 const keyContent = key.textContent;
+                                 const displayedNum = display.textContent;
+                                 const previousKeyType = calculator.dataset.previousKeyType;
+
+                                 const calculate = (n1, operator, n2) => {
+
+                                    //calculate function for firstValue, operator, and secondValue here
+                                    let result = "";
+
+                                    switch(operator) { //use switch to go through each operator case, parse string to a float
+                                                       //other calculator operation cases can be added if needed
+                                        case "add": 
+                                        result = parseFloat(n1) + parseFloat(n2);
+                                        break;
+
+                                        case "subtract": 
+                                        result = parseFloat(n1) - parseFloat(n2);
+                                        break;
+
+                                        case "multiply": 
+                                        result = parseFloat(n1) * parseFloat(n2);
+                                        break;
+
+                                        case "divide":
+                                        result = parseFloat(n1) / parseFloat(n2);
+                                        break;
+                                    }
+
+                                    return result;
+
+                                 }
+
+                                 if (!action) {
+
+                                     //console log the keys that do not have a data-action attribute.
+                                     //console.log("This is a number key.");
+
+                                     if (displayedNum == "0" || previousKeyType == "operator" ||
+                                      previousKeyType == "calculate") {
+
+                                         // replace "0" if that's being displayed
+                                         display.textContent = keyContent;
+
+                                     } else {
+
+                                         display.textContent = displayedNum + keyContent;
+
+                                     }
+
+                                     calculator.dataset.previousKey = "number";
+
+                                 }
+
+                                 if (
+                                     action == "add" ||
+                                     action == "subtract" ||
+                                     action == "multiply" ||
+                                     action == "divide"
+                                 ) {
+
+                                     //console log the keys that do have a data-action attribute.
+                                     //i.e, operator key.
+                                     //console.log("This is an operator key.");
+
+                                     const firstValue = calculator.dataset.firstValue;
+                                     const operator = calculator.dataset.operator;
+                                     const secondValue = displayedNum;
+
+                                     if (firstValue && operator && previousKeyType != "operator" &&
+                                         previousKeyType != "calculate") {
+
+                                        const calcValue = calculate(firstValue, operator, secondValue);
+                                        display.textContent = calcValue;
+
+                                        //the calculated value is updated to firstValue here
+                                        calculator.dataset.firstValue = calcValue;
+
+                                     } else {
+
+                                        //no calculations, displayedNum will be updated to firstValue
+                                        calculator.dataset.firstValue = displayedNum;
+
+                                     }
+
+                                     key.classList.add("is-depressed");
+                                        calculator.dataset.previousKeyType = "operator";
+                                        calculator.dataset.firstValue = displayedNum;
+                                        calculator.dataset.operator = action;
+
+                                 }
+
+                                 if (action == "decimal") {
+
+                                     //console log the decimal key with data-action attribute.
+                                     //console.log("This is a decimal key.");
+
+                                     //Do not add another decimal if decimal is already there
+                                     if (!displayedNum.includes(".")) {
+
+                                        display.textContent = displayedNum + ".";
+
+                                     } else if (previousKeyType == "operator" ||
+                                                previousKeyType == "calculate" ) {
+
+                                        display.textContent = '0.';
+
+                                     }
+
+                                     calculator.dataset.previousKey = "decimal";
+
+                                 }
+
+                                 if (action == "clear") {
+
+                                     //console log the clear key with data-action attribute.
+                                     //console.log("This is a clear key.");
+
+                                     if (key.textContent == "AC") {
+
+                                        //AC button state will clear all values.
+                                        calculator.dataset.firstValue = "";
+                                        calculator.dataset.modValue = "";
+                                        calculator.dataset.operator = "";
+                                        calculator.dataset.previousKeyType = "";
+
+                                     } else {
+
+                                        key.textContent = "AC";
+
+                                     }
+
+                                     display.textContent = 0;
+                                     calculator.dataset.previousKeyType = "clear";
+
+                                 }
+
+                                 if (action != "clear") {
+
+                                    //access the HTML for the clear button, change to CE whenever action is
+                                    //not equal to clear.
+                                     const clearButton = calculator.querySelector("[data-action = clear]");
+                                     clearButton.textContent = "CE";
+
+                                 }
+
+                                 if (action == "calculate") {
+
+                                     //console log the calculate key with data-action attribute.
+                                     //console.log("This is a calculate key.");
+
+                                     let firstValue = calculator.dataset.firstValue;
+                                     const operator = calculator.dataset.operator;
+                                     const secondValue = displayedNum;
+
+                                     if (firstValue) {
+
+                                         if (previousKeyType == "calculate") {
+
+                                             firstValue = displayedNum;
+                                             secondValue = calculator.dataset.modValue;
+
+                                         }
+
+                                        //take what was on the display
+                                        display.textContent = calculate(firstValue, operator, secondValue);
+
+                                     }
+
+                                    //set the modValue
+                                    calculator.dataset.modValue = secondValue;
+                                    calculator.dataset.previousKeyType = "calculate";
+
+                                 }
+
+                                 Array.from(key.parentNode.children)
+                                     //Removes keys that were added to class List "is-depressed".
+                                     .forEach(k => k.classList.remove("is-depressed"));
+
+                            }
+                        })
+                    
+                    </script>
+
+                </div>
+
+                <div class = "ProjectTwo2-images">
+
+                    <img src = images/JSProject2/JSCalculatorAppPic1.PNG>
+
+                </div>
+
+            </div>
+
+        </div>
+
         <div class = "ProjectTwo-content-wrapper">
 
             <div class = "ProjectTwo-three-row">
 
                 <div class = ProjectTwo-description>
 
-                    <h1>Javascript Messenger Personal Project</h1>
+                    <h1 id = textboxRemoveBTNReDirect>Javascript Messenger Personal Project</h1>
 
                     <p>This is a Javascript messenger project started on January 11th, 2020. Its final version
                         was completed on January 17th, 2020. This is a front-end inner HTML messenger application.
                         The application uses HTML, CSS, and Javascript. The three buttons below allow you to
                         add or remove messages posted to the screen from what is typed in the text box. The 
                         boneworks button gives you an alert message with a quote from the Virtual Reality game Boneworks.
-                        More detailed documentation can be viewed from my GitHub <a href = "https://github.com/Wesley26/Wesley26.github.io/blob/master/projectTwo.html">respository.</a>
-                        The application and website were coded in Visual Studio Code.
+                        More detailed documentation for this entire webpage can be viewed from my GitHub <a href = "https://github.com/Wesley26/Wesley26.github.io/blob/master/projectTwo.html">respository.</a>
+                        The application and website were coded in Visual Studio Code. This messenger app
+                        was updated to work side by side un-affected with the other Javascript apps on this webpage.
                     </p>
 
                 </div>
@@ -70,7 +318,7 @@
                     <div class = Messages-Box>
 
                        <ul id = "messages"></ul>
-                       <input id = "textbox" style = "height:20px; width:250px" type = "text">
+                       <input id = "textbox" style = "height:20px; width:250px; background-color: cornsilk;" type = "text">
 
                     </div>
 
@@ -112,11 +360,15 @@
                               //option is boolean, confirm takes one true [OK] and false [Cancel] argument
 
                               if (option) {
+
                                   answer = alert("Your messages are removed.");
-                                  window.location.href = "projectTwo.html"; //clears/reset entire window
+                                  window.location.href = "projectTwo.html#textboxRemoveBTNReDirect";
+                                  messages.innerHTML = ""; //Clears and resets textbox innerHTML text only.
+                                  //keep the user centered at the messenger app, not affecting other apps.
 
                               } else {
                                   answer = alert("Your messages have been kept on your screen.");
+                                  window.location.href = "projectTwo.html#textboxRemoveBTNReDirect";
 
                               }
 
@@ -125,7 +377,27 @@
                            //event listener when clicking boneworksButton
                            boneworksButton.addEventListener("click", function(){
 
+                               const boneworksGameQuotes = [
+
+                                  "Is this another tech demo?",
+                                  "Watermelons are everywhere!",
+                                  "Put on different virtual reality headsets to experience different scenes.",
+                                  "A virtual drink called 'melon-belly' can be a common find.",
+
+                               ]
+
                                alert("Is this another tech demo?");
+
+                               for (i = 0; i < boneworksGameQuotes.length; i++) {
+
+                                  //create a new innerHTML message for every quote in the array.
+                                  var newMessage = document.createElement("li");
+
+                                  newMessage.innerHTML = boneworksGameQuotes[i];
+                                  messages.appendChild(newMessage);
+
+                               }
+
                            });
 
                     </script>
@@ -141,6 +413,8 @@
             </div>     
 
         </div>
+
+    </div>
 
     </div>
     

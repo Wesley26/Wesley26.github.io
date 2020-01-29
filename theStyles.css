@@ -303,13 +303,104 @@ body {
 
 /* This is the style for projectTwo.html. */
 
-.ProjectTwo-content-wrapper  {
+.ProjectTwo-master-content-wrapper  {
 
+     display: grid;
+     grid-template-columns: 1fr, 1fr;
+     grid-auto-flow: row dense;
+
+}
+
+.ProjectTwo2-content-wrapper  {
+
+     /*Styles for calculator app are here*/
      display: flex;
  
 }
 
- .ProjectTwo-three-row {
+.ProjectTwo2-three-row {
+
+     position: relative;
+
+}
+
+.ProjectTwo2-description {
+
+     padding-left: 3%;
+     padding-right: 3%;
+     font-family: "Alata", sans-serif;
+     font-size: larger;
+
+}
+
+.ProjectTwo2-description h1 {
+
+     font-family: "Julius Sans One", sans-serif;
+     color: darkgreen;
+
+}
+
+.calculatorApp {
+
+     /* Styles which control the calculator app begin here */
+     position: center;
+     background-color: rgb(157, 191, 196);
+     border-left-color: rgb(214, 216, 218);
+     border-right-color: rgb(214, 216, 218);
+     margin-left: 28%;
+     margin-right: 32%;
+     padding-left: 3%;
+     padding-right: 3%;
+     padding-top: 3%;
+     padding-bottom: 3%;
+
+}
+
+.calculatorApp .calculatorDisplay {
+
+     background-color: cornsilk;
+     font-family: "Alata", sans-serif;
+     padding-bottom: 1%;
+
+}
+
+.calculatorApp .calculatorKeys > button {
+
+     position: grid;
+     margin-top: 3px;
+     padding-top: 1%;
+     height: 10%;
+     width: 10%;
+
+}
+
+.ProjectTwo2-images {
+
+     padding-top: 3%;
+     padding-left: 3%;
+     padding-right: 3%;
+     padding-bottom: 1%;
+     display: grid;
+     grid-template-rows: 5fr;
+     grid-area: auto;
+
+}
+
+.ProjectTwo2-images img  {
+
+     width: 100%;
+     height: fit-content;
+
+}
+
+.ProjectTwo-content-wrapper  {
+
+     /* Styles for messenger app begin here*/
+     display: flex;
+ 
+}
+
+.ProjectTwo-three-row {
 
      position: relative;
 
