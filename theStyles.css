@@ -241,6 +241,27 @@ body {
 
 }
 
+.profile-content-wrapper h3 .webdevLink {
+
+     text-decoration: none;
+     color: black;
+
+}
+
+.profile-content-wrapper h3 .webdevLink:hover {
+
+     color: cadetblue;
+     outline-color: lightskyblue;
+
+}
+
+.profile-content-wrapper h3 .webdevLink:active {
+
+     color: lightsteelblue;
+     outline-color: lightskyblue;
+
+}
+
 /* This is the style for projectOne.html */
 
 .ProjectOne-content-wrapper  {
